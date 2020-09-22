@@ -11,7 +11,7 @@ Open Godot. Import the project.godot file and open the "Color and Particles" pro
 
 You should see a very basic brick-breaker game with a HUD that will control certain effects: adding color to the blocks, the paddle, and the ball; and adding particle effects to the blocks, the paddle, and the walls.
 
-The signals have all been connected, and the code should basicallly be in place. Your assignment is to edit the following scripts, adding functionality to the update_color and update_particle methods:
+The signals have all been connected, and the code should basicallly be in place. Your assignment is to edit the following scripts, adding functionality to the update_color and emit_particle methods:
 
  * /Background/Background.gd
  * /Ball/Ball.gd
