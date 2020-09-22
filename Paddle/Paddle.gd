@@ -6,6 +6,7 @@ onready var HUD = get_node("/root/Game/HUD")
 
 func _ready():
 	HUD.connect("changed",self,"_on_HUD_changed")
+	update_color()
 
 
 func update_color():
@@ -14,7 +15,7 @@ func update_color():
 	else:
 		pass
 
-func update_particle():
+func emit_particle(pos):
 	if HUD.particle_paddle:
 		pass
 	else:
@@ -22,7 +23,6 @@ func update_particle():
 
 func _on_HUD_changed():
 	update_color()
-	update_particle()
 
 func _physics_process(_delta):
 	var target = get_viewport().get_mouse_position().x

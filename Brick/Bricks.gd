@@ -23,5 +23,7 @@ func start_bricks():
 		for h in range(H):
 			var brick = Brick.instance()
 			brick.position = Vector2(startx + w*(B.x+margin), starty + h*(B.y+margin))
+			brick.row = h
+			brick.col = w
 			add_child(brick)
 

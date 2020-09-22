@@ -26,6 +26,8 @@ func _on_HUD_changed():
 func _physics_process(_delta):
 	var bodies = get_colliding_bodies()
 	for body in bodies:
+		if body.has_method("emit_particle"):
+			body.emit_particle(global_position)
 		if body.is_in_group("Brick"):
 			body.die()
 

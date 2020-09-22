@@ -7,7 +7,6 @@ var col = 0
 func _ready():
 	HUD.connect("changed",self,"_on_HUD_changed")
 	update_color()
-	update_particle()
 
 func update_color():
 	if HUD.color_blocks:
@@ -15,7 +14,7 @@ func update_color():
 	else:
 		pass
 
-func update_particle():
+func emit_particle(pos):
 	if HUD.particle_blocks:
 		pass
 	else:
@@ -24,7 +23,6 @@ func update_particle():
 	
 func _on_HUD_changed():
 	update_color()
-	update_particle()
 
 
 func die():
