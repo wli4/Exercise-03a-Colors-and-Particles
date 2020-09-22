@@ -4,10 +4,7 @@ onready var paddle_size = $ColorRect.rect_size
 onready var Ball = load("res://Ball/Ball.tscn")
 
 func _ready():
-	var ball = Ball.instance()
-	ball.position = self.position + Vector2(paddle_size.x/2, -20)
-	ball.name = "Ball"
-	call_deferred("add_child", ball)
+	pass
 
 
 func _physics_process(_delta):
