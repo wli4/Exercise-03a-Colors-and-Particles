@@ -19,7 +19,14 @@ The signals have all been connected, and the code should basicallly be in place.
  * /Paddle/Paddle.gd
  * /Walls/Walls.gd
 
-All color references correspond to those defined in the [Open Color scheme](https://yeun.github.io/open-color/)
+All color references correspond to those defined in the [Open Color scheme](https://yeun.github.io/open-color/). In GDScript, to change the color, use
+```
+		$Color.color = Color8(R,G,B)
+```
+and to change back to white, use:
+```
+		$Color.color = Color(1,1,1,1)
+```
 
 The colors should behave as follows:
 
