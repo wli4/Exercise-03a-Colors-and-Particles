@@ -19,6 +19,10 @@ config/name="Colors and Particles"
 run/main_scene="res://Game.tscn"
 config/icon="res://icon.png"
 
+[autoload]
+
+Global="*res://HUD/Global.gd"
+
 [display]
 
 window/size/height=768

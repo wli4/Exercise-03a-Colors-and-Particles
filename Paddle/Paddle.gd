@@ -1,11 +1,28 @@
 extends KinematicBody2D
 
-onready var paddle_size = $ColorRect.rect_size
+onready var paddle_size = $Color.rect_size
 onready var Ball = load("res://Ball/Ball.tscn")
+onready var HUD = get_node("/root/Game/HUD")
 
 func _ready():
-	pass
+	HUD.connect("changed",self,"_on_HUD_changed")
 
+
+func update_color():
+	if HUD.color_paddle:
+		pass
+	else:
+		pass
+
+func update_particle():
+	if HUD.particle_paddle:
+		pass
+	else:
+		pass
+
+func _on_HUD_changed():
+	update_color()
+	update_particle()
 
 func _physics_process(_delta):
 	var target = get_viewport().get_mouse_position().x

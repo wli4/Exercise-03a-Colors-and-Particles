@@ -1,18 +1,34 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Paddle/Paddle.gd" type="Script" id=1]
 [ext_resource path="res://Ball/Ball_Container.gd" type="Script" id=2]
 [ext_resource path="res://Brick/Bricks.gd" type="Script" id=3]
+[ext_resource path="res://HUD/HUD.gd" type="Script" id=4]
+[ext_resource path="res://Walls/Walls.gd" type="Script" id=5]
+[ext_resource path="res://Background/Background.gd" type="Script" id=6]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 50, 10 )
 
 [node name="Game" type="Node2D"]
 
+[node name="Background" type="ColorRect" parent="."]
+margin_right = 1024.0
+margin_bottom = 768.0
+color = Color( 0, 0, 0, 1 )
+script = ExtResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="Walls" type="StaticBody2D" parent="."]
+script = ExtResource( 5 )
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Walls"]
 polygon = PoolVector2Array( 0, 0, 0, 768, 1024, 768, 1024, 0, 64, 0, 64, -64, 1088, -64, 1088, 832, -64, 832, -64, -64, 64, -64, 64, 0 )
+
+[node name="Particles2D" type="Particles2D" parent="Walls"]
+emitting = false
 
 [node name="Bricks" type="Node2D" parent="."]
 script = ExtResource( 3 )
@@ -23,7 +39,7 @@ script = ExtResource( 3 )
 position = Vector2( 507, 700 )
 script = ExtResource( 1 )
 
-[node name="ColorRect" type="ColorRect" parent="Paddle_Container/Paddle"]
+[node name="Color" type="ColorRect" parent="Paddle_Container/Paddle"]
 margin_right = 100.0
 margin_bottom = 20.0
 __meta__ = {
@@ -34,8 +50,147 @@ __meta__ = {
 position = Vector2( 50, 10 )
 shape = SubResource( 1 )
 
+[node name="Particles2D" type="Particles2D" parent="Paddle_Container/Paddle"]
+emitting = false
+
 [node name="Ball_Container" type="Node2D" parent="."]
 script = ExtResource( 2 )
 
 [node name="Camera" type="Camera2D" parent="."]
 position = Vector2( 512, 383 )
+
+[node name="HUD" type="Control" parent="."]
+visible = false
+margin_right = 40.0
+margin_bottom = 40.0
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Menu" type="Control" parent="HUD"]
+margin_right = 40.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Background" type="ColorRect" parent="HUD/Menu"]
+margin_left = -13.0
+margin_top = -13.0
+margin_right = 275.0
+margin_bottom = 784.0
+color = Color( 0.286275, 0.313726, 0.341176, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Color" type="Control" parent="HUD/Menu"]
+margin_left = 30.0
+margin_top = 30.0
+margin_right = 70.0
+margin_bottom = 70.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Color_Paddle" type="CheckBox" parent="HUD/Menu/Color"]
+margin_right = 126.419
+margin_bottom = 26.4193
+text = "Colored Paddle"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Color_Ball" type="CheckBox" parent="HUD/Menu/Color"]
+margin_top = 35.0
+margin_right = 124.0
+margin_bottom = 59.0
+text = "Colored Ball"
+
+[node name="Color_Blocks" type="CheckBox" parent="HUD/Menu/Color"]
+margin_top = 70.0
+margin_right = 124.0
+margin_bottom = 94.0
+text = "Colored Blocks"
+
+[node name="Color_Background" type="CheckBox" parent="HUD/Menu/Color"]
+margin_top = 105.0
+margin_right = 155.0
+margin_bottom = 129.0
+text = "Colored Background"
+
+[node name="Particles" type="Control" parent="HUD/Menu"]
+margin_left = 30.0
+margin_top = 70.0
+margin_right = 70.0
+margin_bottom = 110.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Particle_Paddle" type="CheckBox" parent="HUD/Menu/Particles"]
+margin_top = 120.0
+margin_right = 155.0
+margin_bottom = 144.0
+text = "Particle Paddle"
+
+[node name="Particle_Walls" type="CheckBox" parent="HUD/Menu/Particles"]
+margin_top = 155.0
+margin_right = 155.0
+margin_bottom = 179.0
+text = "Particle Walls"
+
+[node name="Particle_Blocks" type="CheckBox" parent="HUD/Menu/Particles"]
+margin_top = 190.0
+margin_right = 155.0
+margin_bottom = 214.0
+text = "Particle Blocks"
+
+[node name="Blocks" type="Control" parent="HUD/Menu"]
+margin_right = 40.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Ball" type="Control" parent="HUD/Menu"]
+margin_right = 40.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Paddle" type="Control" parent="HUD/Menu"]
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="Audio" type="Control" parent="HUD/Menu"]
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="Reset" type="Button" parent="HUD/Menu"]
+margin_left = 30.0
+margin_top = 670.0
+margin_right = 110.0
+margin_bottom = 700.0
+text = "Reset"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Quit" type="Button" parent="HUD/Menu"]
+margin_left = 30.0
+margin_top = 710.0
+margin_right = 110.0
+margin_bottom = 740.0
+text = "Quit"
+[connection signal="toggled" from="HUD/Menu/Color/Color_Paddle" to="HUD" method="_on_Color_Paddle_toggled"]
+[connection signal="toggled" from="HUD/Menu/Color/Color_Ball" to="HUD" method="_on_Color_Ball_toggled"]
+[connection signal="toggled" from="HUD/Menu/Color/Color_Blocks" to="HUD" method="_on_Color_Blocks_toggled"]
+[connection signal="toggled" from="HUD/Menu/Color/Color_Background" to="HUD" method="_on_Color_Background_toggled"]
+[connection signal="toggled" from="HUD/Menu/Particles/Particle_Paddle" to="HUD" method="_on_Particle_Paddle_toggled"]
+[connection signal="toggled" from="HUD/Menu/Particles/Particle_Walls" to="HUD" method="_on_Particle_Walls_toggled"]
+[connection signal="toggled" from="HUD/Menu/Particles/Particle_Blocks" to="HUD" method="_on_Particle_Blocks_toggled"]
+[connection signal="pressed" from="HUD/Menu/Reset" to="HUD" method="_on_Reset_pressed"]
+[connection signal="pressed" from="HUD/Menu/Quit" to="HUD" method="_on_Quit_pressed"]
